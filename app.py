@@ -75,8 +75,8 @@ h1 { font-size: 36px; }
 .day:hover { outline: 2px solid white; }
 .bad { background: #8b0000; }
 .low { background: #a3e4a5; }
-.good { background: #238636; }
-.high { background: #ffb6c1; }
+.good { background: #87CEEB; }
+.high { background: #CC5500; }
 select {
     background: #161b22;
     color: white;
