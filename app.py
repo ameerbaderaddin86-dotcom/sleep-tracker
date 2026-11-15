@@ -23,78 +23,131 @@ HTML = """
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sleep Tracker</title>
-
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #0d1117;
-    color: white;
-    font-family: Arial;
+    color: #f0f6fc;
+    font-family: Arial, sans-serif;
     padding: 30px;
+    margin: 0;
 }
+
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
+    width: 100%;
     margin: auto;
 }
-h1 { font-size: 36px; }
+
+h1 { font-size: 38px; }
 .subtitle { color: #8b949e; }
+
 .stats {
-    display: flex;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
     margin: 30px 0;
 }
+
 .stat {
     background: #161b22;
-    padding: 20px;
-    border-radius: 12px;
-    flex: 1;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #30363d;
+    min-width: 0;
+    transition: 0.2s;
 }
-.stat h2 { font-size: 28px; }
+
+.stat:hover {
+    transform: translateY(-4px);
+    border-color: #58a6ff;
+}
+
+.stat h2 { font-size: 30px; }
+
 .months {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
 }
+
 .month {
     background: #161b22;
-    padding: 15px;
-    border-radius: 12px;
+    padding: 18px;
+    border-radius: 16px;
+    border: 1px solid #30363d;
+    min-width: 0;
 }
+
+.month h3 {
+    font-size: 19px;
+    margin-bottom: 22px;
+}
+
 .days {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 5px;
 }
+
 .day {
+    width: 100%;
     aspect-ratio: 1;
-    border-radius: 4px;
+    border-radius: 5px;
     background: #30363d;
     border: none;
     cursor: pointer;
     color: white;
+    font-size: 13px;
+    min-width: 0;
+    transition: 0.2s;
 }
-.day:hover { outline: 2px solid white; }
+
+.day:hover {
+    outline: 2px solid #58a6ff;
+    transform: scale(1.08);
+}
+
 .bad { background: #8b0000; }
-.low { background: #a3e4a5; }
-.good { background: #87CEEB; }
+.low { background: #a3e4a5; color: #111; }
+.good { background: #87CEEB; color: #111; }
 .high { background: #CC5500; }
+
 select {
     background: #161b22;
     color: white;
-    padding: 10px;
+    padding: 12px 18px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    font-size: 15px;
 }
+
 .legend {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     margin-top: 30px;
+    color: #c9d1d9;
 }
-@media(max-width:700px) {
-    .months { grid-template-columns: repeat(2,1fr); }
+
+@media (max-width: 900px) {
+    .months {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
-@media(max-width:450px) {
-    .months { grid-template-columns: 1fr; }
+
+@media (max-width: 600px) {
+    body { padding: 15px; }
+    h1 { font-size: 29px; }
+    .months, .stats {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
+
 </head>
 
 <body>
